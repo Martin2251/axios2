@@ -1,7 +1,11 @@
+import { useState } from "react";
+// need this to re-render the beers
 const axios = require("axios");
 // this is needed in order to require axios
 
+// the default beer list is an empty array
 const Index = () => {
+  const [beerList, setBeerList] = useState([]);
   const getBeers = (e) => {
     e.preventDefault();
     // to stop the button re-rendering
@@ -9,13 +13,14 @@ const Index = () => {
     // axios always comes back with one.then i want to render this out to the console
     axios
       .get("https://api.punkapi.com/v2/beers")
-      .then((res) => console.log(res));
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
     <div>
       <h4>Beer Punk </h4>
-      <button>Get All Beers</button>
+      <button onClick={getBeers}>Get All Beers</button>
     </div>
   );
 };
