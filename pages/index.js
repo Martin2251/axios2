@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 const Index = () => {
   const martin = {
     name: "martin",
@@ -7,7 +9,9 @@ const Index = () => {
     eyeGlasses: true,
   };
 
-  martin.hobby;
+  //accessing an object
+
+  console.log(martin.hobby);
 
   return (
     <div>
@@ -15,3 +19,5 @@ const Index = () => {
     </div>
   );
 };
+
+export default Index;
