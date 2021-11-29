@@ -13,7 +13,7 @@ const Index = () => {
     // axios always comes back with one.then i want to render this out to the console
     axios
       .get("https://api.punkapi.com/v2/beers")
-      .then((res) => console.log(res))
+      .then((res) => setBeerList(res.data))
       .catch((err) => console.log(err));
   };
 
@@ -21,6 +21,11 @@ const Index = () => {
     <div>
       <h4>Beer Punk </h4>
       <button onClick={getBeers}>Get All Beers</button>
+      {beerList.length >= 1
+        ? beerList.map((beer, idx) => {
+            return <p key={idx}>{beer.name}</p>;
+          })
+        : ""}
     </div>
   );
 };
